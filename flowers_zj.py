@@ -63,7 +63,8 @@ def extract_images(dataset_tf_dir,if_training=True):
   np_images = list(np_images)
 
   for i in range(1,num_images):
-      print('Start reading image ',i)
+      if i % 400 == 0:
+          print('Start reading image ',i)
       image = Image.open(filenames[i])
       image = image.resize((300, 300), Image.NEAREST)
       np_image = numpy.asarray(image, dtype='uint8')

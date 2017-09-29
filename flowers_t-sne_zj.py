@@ -55,7 +55,7 @@ def generate_embeddings():
     embed= config.embeddings.add()
     embed.tensor_name = 'embedding:0'
     embed.metadata_path = os.path.join(FLAGS.log_dir + '/projector/labels.tsv')
-    embed.sprite.image_path = os.path.join(FLAGS.data_dir + '/master.jpg')
+    embed.sprite.image_path = os.path.join(FLAGS.log_dir + '/projector/master.jpg')
 
     # Specify the width and height of a single thumbnail.
     embed.sprite.single_image_dim.extend([28, 28])

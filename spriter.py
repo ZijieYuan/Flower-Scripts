@@ -12,6 +12,7 @@ from collections import defaultdict
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--image_dir", help="image directory")
+parser.add_argument("--log_dir", help="log directory")
 parser.add_argument("--images_per_type", default=20, type=int,
 					help="how many images to include for each type")
 parser.add_argument("--subimage_size", default=50,type=int,
@@ -20,6 +21,7 @@ args = parser.parse_args()
 
 
 image_dir = args.image_dir
+log_dir = args.log_dir
 images_per_type = args.images_per_type
 subimage_size = args.subimage_size
 
@@ -35,7 +37,7 @@ num_classes = len(sub_directories)
 labels_explain = dict(zip(sub_directories, range(num_classes)))
 
 # Save the explaination of labels into a file
-with open('labels_explain.txt' , 'w') as f:
+with open(log_dir+'/labels_explain.txt' , 'w') as f:
 	for k,v in labels_explain.items():
 		f.write(str(k) + ' : ' + str(v) + '\n')
 
@@ -90,9 +92,9 @@ for i in range(num_classes):
 		else:
 			col_position +=1
 
-master.save('master.jpg')
+master.save(log_dir+'/projector/master.jpg')
 # Save "labels" in a file
-with open('labels.tsv' , 'w') as f:
+with open(log_dir+'/projector/labels.tsv' , 'w') as f:
 	for l in labels:
 		f.write(str(l)+'\n')
 '''
